@@ -4,7 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container Styles */
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            max-width: 900px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .container:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textClip 2s linear infinite;
+        }
+
+        @keyframes textClip {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .form-group:last-child {
+            margin-right: 0;
+        }
+
+        label {
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        textarea {
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #f6f6f6;
+            outline: none;
+            transition: all 0.4s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: #fda085;
+            box-shadow: 0 0 15px rgba(253, 160, 133, 0.4);
+            background-color: #fff;
+        }
+
+        input[type="text"]:focus + label,
+        input[type="email"]:focus + label,
+        input[type="password"]:focus + label,
+        input[type="date"]:focus + label,
+        textarea:focus + label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        /* Floating Label */
+        input[type="text"]:not(:placeholder-shown) + label,
+        input[type="email"]:not(:placeholder-shown) + label,
+        input[type="password"]:not(:placeholder-shown) + label,
+        input[type="date"]:not(:placeholder-shown) + label,
+        textarea:not(:placeholder-shown) + label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Full-width styling for address field */
+        .full-width {
+            flex: 1;
+        }
+
+        /* Submit Button Styles */
+        input[type="submit"] {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            width: 100%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4);
+            transform: translateY(-3px);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(245, 87, 108, 0.2);
+        }
+
+        /* Container Background Animation */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            background-size: 50% 50%;
+            z-index: -1;
+            animation: moveBackground 4s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50%, 50%); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -53,4 +251,61 @@
             <input type="submit" value="Register">
         </form>
     </div>
-    <script src="..//javascript/script.js"></script>
+
+    <script>
+        function validateForm() {
+            // Name validation
+            let name = document.getElementById('name').value;
+            if (name === "" || !/^[a-zA-Z\s]+$/.test(name)) {
+                alert("Please enter a valid name (letters and spaces only).");
+                return false;
+            }
+
+            // Email validation
+            let email = document.getElementById('email').value;
+            if (email === "" || !/^\S+@\S+\.\S+$/.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Password validation
+            let password = document.getElementById('password').value;
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            // Confirm Password validation
+            let confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // Phone number validation
+            let phone = document.getElementById('phone').value;
+            if (phone === "" || !/^\d{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            // Date of Birth validation
+            let dob = document.getElementById('dob').value;
+            if (dob === "") {
+                alert("Please select your date of birth.");
+                return false;
+            }
+
+            // Address validation
+            let address = document.getElementById('address').value;
+            if (address === "") {
+                alert("Please enter your address.");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+</body>
+</html>
