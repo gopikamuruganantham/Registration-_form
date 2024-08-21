@@ -12,8 +12,9 @@ Features:
 JAVASCRIPT VALIDATION: 
    The form includes comprehensive JavaScript validation for all fields, providing instant feedback if incorrect information is entered.
 Smooth Transitions: CSS transitions are applied to inputs and buttons, offering a polished and smooth user experience.
+
 HOW TO USE:
 
- 1. Clone the repository to your local machine.
- 2.Open index.html in your web browser to view and interact with the registration form.
- 3.Modify the style.css and script.js files to customize the form according to your needs.
+  1.Clone or download the repository to your local machine. 
+  2.Open index.html in your web browser to view and interact with the registration form. 
+  3.No additional setup is required; all styling and functionality are contained in the single html file.
